@@ -39,15 +39,15 @@ class TicTacToe
     !position_taken?(index) && (0..8).include?(index) ? true : false
   end
 
-  def turn(board)
+  def turn
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    if valid_move?(board, index)
-      move(board, index, current_player(board))
-      display_board(board)
+    if valid_move?(index)
+      move(index, current_player)
+      display_board
     else
-      turn(board)
+      turn
     end
   end
 
@@ -56,7 +56,7 @@ class TicTacToe
   end
 
   def current_player
-    turn_count(@board).even? ? "X" : "O"
+    turn_count.even? ? "X" : "O"
   end
 
   def won?
@@ -70,32 +70,32 @@ class TicTacToe
   end
 
   def draw?
-    full?(@board) && !won?(@board)
+    full? && !won?
   end
 
   def over?
-    won?(@board) || draw?(@board)
+    won? || draw?
   end
 
   def winner
-    if won?(@board)
-      @board[won?(@board)[0]]
+    if won?
+      @board[won?[0]]
     end
   end
 
   def message
-    if won?(@board)
-      puts "Congratulations #{winner(@board)}!"
-    elsif draw?(@board)
+    if won?
+      puts "Congratulations #{winner}!"
+    elsif draw?
       puts "Cat's Game!"
     end
   end
 
   def play
     until over?
-      turn(@board)
+      turn
     end
-    message(@board)
+    message
   end
 
 end
