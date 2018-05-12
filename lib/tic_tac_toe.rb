@@ -1,5 +1,7 @@
 class TicTacToe
 
-
+  initialize(board = nil)
+    @board = Array.new(9, " ")
+  end
 
 end
