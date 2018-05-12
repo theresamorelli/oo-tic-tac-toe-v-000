@@ -63,13 +63,6 @@ class TicTacToe
     turn_count(board).even? ? "X" : "O"
   end
 
-  def play(board)
-    until over?(board)
-      turn(board)
-    end
-    message(board)
-  end
-
   def won?(board)
     WIN_COMBINATIONS.detect do |combination|
       board[combination[0]] == board[combination[1]] && board[combination[1]] == board[combination[2]] && position_taken?(board, combination[0])
@@ -102,4 +95,11 @@ class TicTacToe
     end
   end
   
+  def play(board)
+    until over?(board)
+      turn(board)
+    end
+    message(board)
+  end
+
 end
