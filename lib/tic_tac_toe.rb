@@ -51,17 +51,17 @@ class TicTacToe
     end
   end
 
-  def turn_count(board)
-    board.count{|value| value == "X" || value == "O"}
+  def turn_count
+    @board.count{|value| value == "X" || value == "O"}
   end
 
-  def current_player(board)
-    turn_count(board).even? ? "X" : "O"
+  def current_player
+    turn_count(@board).even? ? "X" : "O"
   end
 
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.detect do |combination|
-      board[combination[0]] == board[combination[1]] && board[combination[1]] == board[combination[2]] && position_taken?(board, combination[0])
+      @board[combination[0]] == @board[combination[1]] && @board[combination[1]] == @board[combination[2]] && position_taken?(@board, combination[0])
     end
   end
 
