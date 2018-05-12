@@ -65,37 +65,37 @@ class TicTacToe
     end
   end
 
-  def full?(board)
-    board.all?{|value| value != nil && value != " "}
+  def full?
+    @board.all?{|value| value != nil && value != " "}
   end
 
-  def draw?(board)
-    full?(board) && !won?(board)
+  def draw?
+    full?(@board) && !won?(@board)
   end
 
-  def over?(board)
-    won?(board) || draw?(board)
+  def over?
+    won?(@board) || draw?(@board)
   end
 
-  def winner(board)
-    if won?(board)
-      board[won?(board)[0]]
+  def winner
+    if won?(@board)
+      @board[won?(@board)[0]]
     end
   end
 
-  def message(board)
-    if won?(board)
-      puts "Congratulations #{winner(board)}!"
-    elsif draw?(board)
+  def message
+    if won?(@board)
+      puts "Congratulations #{winner(@board)}!"
+    elsif draw?(@board)
       puts "Cat's Game!"
     end
   end
 
-  def play(board)
-    until over?(board)
-      turn(board)
+  def play
+    until over?
+      turn(@board)
     end
-    message(board)
+    message(@board)
   end
 
 end
